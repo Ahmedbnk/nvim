@@ -1,5 +1,18 @@
 require("config.options")
 require("config.lazy")
+require("config.stdheader")
+
+--c_lang
+
+--zls
+--shellcheck
+--eslint_d
+--prettier
+--shfmt
+--stylua
+require('lspconfig').clangd.setup {
+  filetypes = {"c"},
+}
 
 vim.diagnostic.config({
   virtual_text = false,
