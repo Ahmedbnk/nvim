@@ -1,4 +1,8 @@
-# 💤 LazyVim
+# Barbariac 💤 LazyVim
 
-A starter template for [LazyVim](https://github.com/LazyVim/LazyVim).
-Refer to the [documentation](https://lazyvim.github.io/installation) to get started.
+Vintharas on top of [LazyVim](http://www.lazyvim.org)
+
+### External dependencies
+
+- [colorscripts](https://github.com/charitarthchugh/shell-color-scripts)
+- [hub](https://hub.github.com/)
