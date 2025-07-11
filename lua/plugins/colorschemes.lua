@@ -9,5 +9,6 @@ return {
       transparent = true,
     },
   },
-  { "LazyVim/LazyVim", opts = { colorscheme = "cyberdream" } },
+  -- Replace LazyVim colorscheme to retrobox:
+  { "LazyVim/LazyVim", opts = { colorscheme = "retrobox" } },
 }
