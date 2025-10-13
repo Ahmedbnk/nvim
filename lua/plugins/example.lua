@@ -1,3 +1,15 @@
+-- -------------------------------------------------------------------------- --
+--                                                                            --
+--                                                        :::      ::::::::   --
+--   example.lua                                        :+:      :+:    :+:   --
+--                                                    +:+ +:+         +:+     --
+--   By: abenkrar <abenkrar@student.1337.ma>        +#+  +:+       +#+        --
+--                                                +#+#+#+#+#+   +#+           --
+--   Created: 2025/10/13 10:10:03 by abenkrar          #+#    #+#             --
+--   Updated: 2025/10/13 10:10:28 by abenkrar         ###   ########.fr       --
+--                                                                            --
+-- -------------------------------------------------------------------------- --
+
 -- since this is just an example spec, don't actually load anything here and return an empty spec
 -- stylua: ignore
 if true then return {} end
@@ -31,15 +43,15 @@ return {
   { "folke/trouble.nvim", enabled = false },
 
   -- override nvim-cmp and add cmp-emoji
-  {
-    "hrsh7th/nvim-cmp",
-    dependencies = { "hrsh7th/cmp-emoji" },
-    ---@param opts cmp.ConfigSchema
-    opts = function(_, opts)
-      table.insert(opts.sources, { name = "emoji" })
-    end,
-  },
-
+  -- {
+  --   "hrsh7th/nvim-cmp",
+  --   dependencies = { "hrsh7th/cmp-emoji" },
+  --   ---@param opts cmp.ConfigSchema
+  --   opts = function(_, opts)
+  --     table.insert(opts.sources, { name = "emoji" })
+  --   end,
+  -- },
+  --
   -- change some telescope options and a keymap to browse plugin files
   {
     "nvim-telescope/telescope.nvim",
