@@ -1,49 +1,34 @@
-return {
-  {
-    "neovim/nvim-lspconfig",
-    config = function()
-      local lspconfig = require("lspconfig")
+-- -------------------------------------------------------------------------- --
+--                                                                            --
+--                                                        :::      ::::::::   --
+--   lsp.lua                                            :+:      :+:    :+:   --
+--                                                    +:+ +:+         +:+     --
+--   By: abenkrar <abenkrar@student.1337.ma>        +#+  +:+       +#+        --
+--                                                +#+#+#+#+#+   +#+           --
+--   Created: 2026/01/11 14:16:44 by abenkrar          #+#    #+#             --
+--   Updated: 2026/01/11 14:17:04 by abenkrar         ###   ########.fr       --
+--                                                                            --
+-- -------------------------------------------------------------------------- --
 
-      -- on_attach function to map keys after LSP attaches to buffer
-      local on_attach = function(_, bufnr)
-        local nmap = function(keys, func, desc)
-          if desc then
-            desc = "LSP: " .. desc
-          end
-          vim.keymap.set("n", keys, func, { buffer = bufnr, desc = desc })
-        end
+vim.keymap.set("n", "gd", function()
+  local params = vim.lsp.util.make_position_params()
+  vim.lsp.buf_request(0, "textDocument/definition", params, function(_, result)
+    if not result or vim.tbl_isempty(result) then
+      return
+    end
 
-        -- LSP keymaps
-        nmap("gd", vim.lsp.buf.definition, "[G]oto [D]efinition")
-        nmap("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
-        nmap("gi", vim.lsp.buf.implementation, "[G]oto [I]mplementation")
-        nmap("gr", vim.lsp.buf.references, "[G]oto [R]eferences")
-        nmap("K", vim.lsp.buf.hover, "Hover Documentation")
-        nmap("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
-        nmap("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction")
-        nmap("<leader>ds", vim.lsp.buf.document_symbol, "[D]ocument [S]ymbols")
-        nmap("<leader>ws", vim.lsp.buf.workspace_symbol, "[W]orkspace [S]ymbols")
+    local locations = vim.tbl_islist(result) and result or { result }
+
+    -- Jump to first non-header file if possible
+    for _, loc in ipairs(locations) do
+      local uri = loc.uri or loc.targetUri
+      if uri and not uri:match("%.h$") then
+        vim.lsp.util.jump_to_location(loc)
+        return
       end
+    end
 
-      -- Capabilities setup (optional)
-      local capabilities = vim.lsp.protocol.make_client_capabilities()
-      capabilities.offsetEncoding = { "utf-16" }
-
-      -- Path to Mason-installed clangd
-      local clangd_path = "/home/abenkrar/.local/share/nvim/mason/bin/clangd"
-
-      lspconfig.clangd.setup({
-        cmd = {
-          clangd_path,
-          "--compile-commands-dir=" .. vim.fn.getcwd(),
-          "--clang-tidy",
-          "--header-insertion=never",
-          "-I/usr/include",
-          "-I/usr/local/include",
-        },
-        on_attach = on_attach,
-        capabilities = capabilities,
-      })
-    end,
-  },
-}
+    -- fallback: jump to first result
+    vim.lsp.util.jump_to_location(locations[1])
+  end)
+end, { buffer = bufnr, desc = "Go to implementation (prefer source)" })
