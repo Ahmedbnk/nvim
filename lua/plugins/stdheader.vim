@@ -82,7 +82,7 @@ function! s:user()
 	endif
 	let l:user = $USER
 	if strlen(l:user) == 0
-		let l:user = "yel-mota"
+		let l:user = "abenkrar"
 	endif
 	return l:user
 endfunction
@@ -93,7 +93,7 @@ function! s:mail()
 	endif
 	let l:mail = $MAIL
 	if strlen(l:mail) == 0
-		let l:mail = "yel-mota@1337.student.ma"
+		let l:mail = "abenkrar@1337.student.ma"
 	endif
 	return l:mail
 endfunction

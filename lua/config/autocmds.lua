@@ -1,3 +1,15 @@
+-- -------------------------------------------------------------------------- --
+--                                                                            --
+--                                                        :::      ::::::::   --
+--   autocmds.lua                                       :+:      :+:    :+:   --
+--                                                    +:+ +:+         +:+     --
+--   By: abenkrar <abenkrar@1337.student.ma>        +#+  +:+       +#+        --
+--                                                +#+#+#+#+#+   +#+           --
+--   Created: 2026/04/16 13:31:04 by abenkrar          #+#    #+#             --
+--   Updated: 2026/04/16 13:31:04 by abenkrar         ###   ########.fr       --
+--                                                                            --
+-- -------------------------------------------------------------------------- --
+
 -- Autocmds are automatically loaded on the VeryLazy event
 -- Default autocmds that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/autocmds.lua
 --
