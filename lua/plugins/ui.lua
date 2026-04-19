@@ -1,28 +1,24 @@
 -- -------------------------------------------------------------------------- --
 --                                                                            --
 --                                                        :::      ::::::::   --
---   tokyonight.lua                                     :+:      :+:    :+:   --
+--   ui.lua                                             :+:      :+:    :+:   --
 --                                                    +:+ +:+         +:+     --
 --   By: abenkrar <abenkrar@1337.student.ma>        +#+  +:+       +#+        --
 --                                                +#+#+#+#+#+   +#+           --
---   Created: 2026/04/19 16:54:41 by abenkrar          #+#    #+#             --
---   Updated: 2026/04/19 16:54:41 by abenkrar         ###   ########.fr       --
+--   Created: 2026/04/19 16:54:53 by abenkrar          #+#    #+#             --
+--   Updated: 2026/04/19 16:55:03 by abenkrar         ###   ########.fr       --
 --                                                                            --
 -- -------------------------------------------------------------------------- --
 
 return {
-  "folke/tokyonight.nvim",
-  lazy = false,
-  priority = 1000,
-  opts = {
-    transparent = true,
-    styles = {
-      sidebars = "transparent",
-      floats = "transparent",
+  {
+    "folke/snacks.nvim",
+    opts = {
+      styles = {
+        terminal = {
+          position = "right",
+        },
+      },
     },
   },
-  config = function(_, opts)
-    require("tokyonight").setup(opts)
-    vim.cmd("colorscheme tokyonight")
-  end,
 }
