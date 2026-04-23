@@ -1,3 +1,15 @@
+-- -------------------------------------------------------------------------- --
+--                                                                            --
+--                                                        :::      ::::::::   --
+--   lazy.lua                                           :+:      :+:    :+:   --
+--                                                    +:+ +:+         +:+     --
+--   By: abenkrar <abenkrar@1337.student.ma>        +#+  +:+       +#+        --
+--                                                +#+#+#+#+#+   +#+           --
+--   Created: 2026/04/23 15:26:36 by abenkrar          #+#    #+#             --
+--   Updated: 2026/04/23 15:26:36 by abenkrar         ###   ########.fr       --
+--                                                                            --
+-- -------------------------------------------------------------------------- --
+
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.loop or vim.uv).fs_stat(lazypath) then
   local lazyrepo = "https://github.com/folke/lazy.nvim.git"
